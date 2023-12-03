@@ -7,3 +7,12 @@ class Socio(models.Model):
     def __str__(self):
         return self.nombre
     
+
+class Jugador(models.Model):
+    nombre  =  models.CharField(max_length=50)
+    edad = models.IntegerField()
+    posicion  =  models.CharField(max_length=3)
+
+    def __str__(self):
+        return self.nombre
+    
