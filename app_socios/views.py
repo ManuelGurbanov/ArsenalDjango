@@ -29,3 +29,14 @@ def agregar_jugador(request):
 def lista_jugadores(request):
     jugadores = Jugador.objects.all()
     return render(request, 'index.html', {'jugadores': jugadores})
+
+from django.shortcuts import get_object_or_404
+
+def eliminar_jugador(request, jugador_id):
+    jugador = get_object_or_404(Jugador, id=jugador_id)
+    
+    if request.method == 'POST':
+        jugador.delete()
+        return redirect('jugadores')  # O redirige a la vista que muestra la lista de jugadores
+    
+    return render(request, 'eliminar_jugador.html', {'jugador': jugador})

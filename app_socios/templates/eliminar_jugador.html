@@ -1,0 +1,8 @@
+<h2>¿Estás seguro de que deseas eliminar a {{ jugador.nombre }}?</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+</form>
+
+<a href="{% url 'jugadores' %}">Cancelar</a>
