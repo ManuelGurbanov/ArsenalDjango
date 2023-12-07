@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from app_socios.models import Jugador  # Asegúrate de importar tu modelo Jugador
+
 class InicioView(TemplateView):
     template_name = "index.html"
 

@@ -112,8 +112,13 @@
     <!-- Zona de Plantilla con las cards de cada jugador -->
     <section class="squadSection">
         <h1>NUESTRA PLANTILLA</h1>
+        <form method="post" action="{% url 'agregar_jugador' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Agregar Jugador</button>
+        </form>
         <ul>
-            {% for jugador in jugadors %}
+            {% for jugador in jugadores %}
                 <h2>{{jugador.nombre}}</h2>
                 <h2>Edad: {{jugador.edad}}</h2>
                 <h2>Posición: {{jugador.posicion}}</h2>
