@@ -122,6 +122,7 @@
                 <h2>{{jugador.nombre}}</h2>
                 <h2>Edad: {{jugador.edad}}</h2>
                 <h2>Posición: {{jugador.posicion}}</h2>
+                <a href="{% url 'editar_jugador' jugador.id %}">Editar</a>
                 <a href="{% url 'eliminar_jugador' jugador.id %}">Eliminar</a>
             {% endfor %}
         </ul>

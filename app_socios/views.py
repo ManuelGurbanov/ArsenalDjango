@@ -40,3 +40,17 @@ def eliminar_jugador(request, jugador_id):
         return redirect('jugadores')  # O redirige a la vista que muestra la lista de jugadores
     
     return render(request, 'eliminar_jugador.html', {'jugador': jugador})
+
+
+def editar_jugador(request, jugador_id):
+    jugador = get_object_or_404(Jugador, id=jugador_id)
+
+    if request.method == 'POST':
+        form = JugadorForm(request.POST, instance=jugador)
+        if form.is_valid():
+            form.save()
+            return redirect('jugadores')  # O redirige a la vista que muestra la lista de jugadores
+    else:
+        form = JugadorForm(instance=jugador)
+
+    return render(request, 'editar_jugador.html', {'form': form, 'jugador': jugador})
