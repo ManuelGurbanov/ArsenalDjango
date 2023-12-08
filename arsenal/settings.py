@@ -80,12 +80,13 @@ WSGI_APPLICATION = 'arsenal.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-       'default': {
+'default': 
+    {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jugadores',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'montagut1$arsenaldb',
+        'USER': 'montagut1',
+        'PASSWORD': '1234database',
+        'HOST': 'montagut1.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
 }
