@@ -16,14 +16,14 @@ from .forms import JugadorForm
 
 def agregar_jugador(request):
     if request.method == 'POST':
-        form = JugadorForm(request.POST)
+        form = JugadorForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('jugadores')  # Asegúrate de que esté 'jugadores' aquí
+            return redirect('jugadores')
     else:
         form = JugadorForm()
 
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'agregar_jugador.html', {'form': form})
 
 
 def lista_jugadores(request):
@@ -37,7 +37,7 @@ def eliminar_jugador(request, jugador_id):
     
     if request.method == 'POST':
         jugador.delete()
-        return redirect('jugadores')  # O redirige a la vista que muestra la lista de jugadores
+        return redirect('jugadores') 
     
     return render(request, 'eliminar_jugador.html', {'jugador': jugador})
 
@@ -46,10 +46,10 @@ def editar_jugador(request, jugador_id):
     jugador = get_object_or_404(Jugador, id=jugador_id)
 
     if request.method == 'POST':
-        form = JugadorForm(request.POST, instance=jugador)
+        form = JugadorForm(request.POST, request.FILES, instance=jugador)
         if form.is_valid():
             form.save()
-            return redirect('jugadores')  # O redirige a la vista que muestra la lista de jugadores
+            return redirect('jugadores')
     else:
         form = JugadorForm(instance=jugador)
 

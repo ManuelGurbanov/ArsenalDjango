@@ -110,23 +110,54 @@
     </div>
 
     <!-- Zona de Plantilla con las cards de cada jugador -->
-    <section class="squadSection">
-        <h1>NUESTRA PLANTILLA</h1>
-        <form method="post" action="{% url 'agregar_jugador' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Agregar Jugador</button>
-        </form>
-        <ul>
+<!-- Zona de Plantilla con la tabla de jugadores -->
+<section class="squadSection">
+    <h1>NUESTRA PLANTILLA</h1>
+    <a href="{% url 'agregar_jugador' %}">Agregar Jugador</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Posición</th>
+                <th>Imagen de Perfil</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for jugador in jugadores %}
-                <h2>{{jugador.nombre}}</h2>
-                <h2>Edad: {{jugador.edad}}</h2>
-                <h2>Posición: {{jugador.posicion}}</h2>
-                <a href="{% url 'editar_jugador' jugador.id %}">Editar</a>
-                <a href="{% url 'eliminar_jugador' jugador.id %}">Eliminar</a>
+                <tr>
+                    <td>{{ jugador.nombre }}</td>
+                    <td>{{ jugador.edad }}</td>
+                    <td>{{ jugador.posicion }}</td>
+                    <td>
+                        {% if jugador.imagen_perfil %}
+                            <img src="{{ jugador.imagen_perfil.url }}" alt="{{ jugador.nombre }} - Imagen de perfil" class="perfil-imagen">
+                        {% else %}
+                            Sin imagen
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'editar_jugador' jugador.id %}">Editar</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'eliminar_jugador' jugador.id %}">Eliminar</a>
+                    </td>
+                </tr>
             {% endfor %}
-        </ul>
-    </section>
+        </tbody>
+    </table>
+</section>
+<style>
+    .perfil-imagen {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+</style>
+
 
     <!-- Zona del estadio con su imagen y texto -->
     <section class="stadiumSection">

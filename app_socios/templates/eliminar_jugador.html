@@ -1,6 +1,6 @@
 <h2>¿Estás seguro de que deseas eliminar a {{ jugador.nombre }}?</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <button type="submit">Sí, eliminar</button>
 </form>

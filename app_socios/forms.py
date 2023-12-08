@@ -1,7 +1,7 @@
 from django import forms
-from .models import Jugador  # Asumiendo que tienes un modelo Jugador en models.py
+from .models import Jugador
 
 class JugadorForm(forms.ModelForm):
     class Meta:
         model = Jugador
-        fields = ['nombre', 'edad', 'posicion']
+        fields = ['nombre', 'edad', 'posicion', 'imagen_perfil']

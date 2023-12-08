@@ -85,8 +85,8 @@ DATABASES = {
         'NAME': 'jugadores',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',  # Puedes cambiar esto según la configuración de tu base de datos.
-        'PORT': '3306',       # Puedes cambiar esto según la configuración de tu base de datos.
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -134,3 +134,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
