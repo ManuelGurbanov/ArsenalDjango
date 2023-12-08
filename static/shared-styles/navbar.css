@@ -1,26 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.inicio-link {
-    font-weight: bold;
-    color: white; /* Cambia el color según tus preferencias */
-}
-
-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-}
-
-.main-content {
-    max-height: calc(100vh - 50px);
-    overflow-y: auto;
-}
+/* navbar.css */
 
 /* Estilos para la barra de navegación */
 nav {
@@ -37,6 +15,7 @@ nav {
     flex-wrap: wrap;
 }
 
+/* Logo mini */
 .logo_mini {
     max-width: 100px;
     min-width: 50px;
@@ -44,11 +23,10 @@ nav {
     width: 6%;
     margin-left: 5%;
     margin-top: 5px;
-    
-
-    z-index: 2; /*para que quede arriba del menú de columnas*/
+    z-index: 2; /* para que quede arriba del menú de columnas */
 }
 
+/* Copas mini */
 .copas_mini {
     width: 13%;
     min-width: 100px;
@@ -57,10 +35,10 @@ nav {
     max-height: 200px;
     margin-right: 3%;
     margin-top: 5px;
-
     z-index: 2;
 }
 
+/* Contenedor de páginas de referencia */
 .pagesRefContainer {
     width: 25rem;
     display: flex;
@@ -71,13 +49,12 @@ nav {
     margin-right: 5%;
 }
 
-/* Estilos CSS */
-
+/* Estilos para los enlaces de referencia */
 .pageRef {
     color: rgb(233, 235, 236);
     position: relative;
-    font-weight:500;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: none;
     transition: color 0.3s; /* Agrega una transición suave para el cambio de color */
 }
@@ -100,46 +77,6 @@ nav {
     width: 100%;
 }
 
-
-/* Estilos para el botón del menú hamburguesa */
-.menu-icon {
-    position: absolute;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.menu-button {
-    margin: 0;
-    padding: 0;
-}
-
-.bar {
-    width: 30px;
-    height: 4px;
-    background-color: black;
-    margin: 6px 0;
-    transition: 0.4s;
-}
-
-/* Estilos para animar las barras al abrir el menú (SI ALGUIEN TIENE GANAS DE HACER MAS LINDA LA ANIMACIÓN, JOYA)*/ 
-.menu-icon.active .bar:nth-child(1) {
-    background-color: white;
-    transform: rotate(90deg) translateY(-5px) translateX(-3px);
-}
-
-.menu-icon.active .bar:nth-child(2) {
-    background-color: white;
-    transform: rotate(90deg);
-}
-
-.menu-icon.active .bar:nth-child(3) {
-    background-color: white;
-    transform: rotate(90deg) translateY(5px) translateX(3px);
-}
-
-
-
-
 /* Estilos por defecto (pantallas grandes) */
 .pagesRefContainer {
     display: flex;
@@ -148,6 +85,3 @@ nav {
 .menu-button {
     display: none;
 }
-
-
-

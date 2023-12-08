@@ -1,13 +1,16 @@
+{% extends 'base.html' %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'formularios.css' %}">
+{% block content %}
 <div class="form-container">
     <form method="post" enctype="multipart/form-data">
         <div class="form-title text-lg">¿Estás seguro de que deseas eliminar a {{ jugador.nombre }}?</div>
         {% csrf_token %}
         <button type="submit">Sí, eliminar</button>
+        <a href="{% url 'jugadores' %}">Cancelar</a>
     </form>
 </div>
-<a href="{% url 'jugadores' %}">Cancelar</a>
+{%endblock%}
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
