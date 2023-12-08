@@ -3,7 +3,7 @@ import os
 import sys
 
 # le indicamos el path del project
-path = '/home/montagut1/ArsenalDjango/arsenal'
+path = '/home/montagut1/ArsenalDjango'
 if path not in sys.path:
     sys.path.append(path)
 
