@@ -1,19 +1,26 @@
 <!-- app_socios/templates/agregar_jugador.html -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'formularios.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Jugador</title>
 </head>
 <body>
-    <h1>Agregar Jugador</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar Jugador</button>
-    </form>
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-title text-lg">Agregar Jugador</div>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar Jugador</button>
+        </form>
+    </div>
     <a href="{% url 'jugadores' %}">Volver a la lista de jugadores</a>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </html>

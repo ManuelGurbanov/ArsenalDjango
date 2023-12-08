@@ -14,28 +14,32 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="inicio/img/icon.webp">
+    <!-- Agrega esta línea para incluir Bootstrap desde un CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
     <!-- Zona de barra de navegacion -->
     <header>
-        <nav>
-            <img src={% static "inicio/img/logonew.webp" %} class="logo_mini" alt="Mini escudo">
-            <button class="menu-button">
-                <div class="menu-icon">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'inicio/img/logonew.webp' %}" class="logo_mini" alt="Mini escudo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="pagesRefContainer">
-                <a href="index.html" class="pageRef">INICIO</a>
-                <a href="https://www.arseshop.com.ar/" target="_blank" class="pageRef">TIENDA</a>
-                <a href="stats/stats.html" class="pageRef">ESTADISTICAS</a>
-                <a href="socio/socio.html" class="pageRef">SOCIO</a>
-                <a href="contacto/contacto.html" class="pageRef">CONTACTO</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="pagesRefContainer navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="{% url 'landing_page' %}">INICIO</a>
+                    <a class="nav-item nav-link" href="https://www.arseshop.com.ar/" target="_blank">TIENDA</a>
+                    <a class="nav-item nav-link" href="">ESTADISTICAS</a>
+                    <a class="nav-item nav-link" href="{% url 'landing_page' %}">SOCIO</a>
+                    <a class="nav-item nav-link" href="{% url 'landing_page' %}">CONTACTO</a>
+                </div>
             </div>
-            <img src="inicio/img/copas.webp" class="copas_mini" alt="Mini escudo">
+            <img src="{% static 'inicio/img/copas.webp' %}" class="copas_mini" alt="Mini escudo">
         </nav>
     </header>
 
@@ -112,43 +116,48 @@
     <!-- Zona de Plantilla con las cards de cada jugador -->
 <!-- Zona de Plantilla con la tabla de jugadores -->
 <section class="squadSection">
-    <h1>NUESTRA PLANTILLA</h1>
-    <a href="{% url 'agregar_jugador' %}">Agregar Jugador</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Edad</th>
-                <th>Posición</th>
-                <th>Imagen de Perfil</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for jugador in jugadores %}
-                <tr>
-                    <td>{{ jugador.nombre }}</td>
-                    <td>{{ jugador.edad }}</td>
-                    <td>{{ jugador.posicion }}</td>
-                    <td>
-                        {% if jugador.imagen_perfil %}
-                            <img src="{{ jugador.imagen_perfil.url }}" alt="{{ jugador.nombre }} - Imagen de perfil" class="perfil-imagen">
-                        {% else %}
-                            Sin imagen
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a href="{% url 'editar_jugador' jugador.id %}">Editar</a>
-                    </td>
-                    <td>
-                        <a href="{% url 'eliminar_jugador' jugador.id %}">Eliminar</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <h1 class="text-center">NUESTRA PLANTILLA</h1>
+        <a href="{% url 'agregar_jugador' %}" class="btn btn-primary mb-3">Agregar Jugador</a>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Posición</th>
+                        <th>Imagen de Perfil</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jugador in jugadores %}
+                        <tr>
+                            <td>{{ jugador.nombre }}</td>
+                            <td>{{ jugador.edad }}</td>
+                            <td>{{ jugador.posicion }}</td>
+                            <td>
+                                {% if jugador.imagen_perfil %}
+                                    <img src="{{ jugador.imagen_perfil.url }}" alt="{{ jugador.nombre }} - Imagen de perfil" class="perfil-imagen img-fluid">
+                                {% else %}
+                                    Sin imagen
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'editar_jugador' jugador.id %}" class="btn btn-warning btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'eliminar_jugador' jugador.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
+
 <style>
     .perfil-imagen {
         width: 50px;
@@ -702,5 +711,8 @@
     </script>
     <script type="text/javascript" src="inicio/js/script.js"></script>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>
