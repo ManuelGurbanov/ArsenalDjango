@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;600;900&display=swap');
-
 body {
     padding: 0;
     margin: 0;
@@ -104,78 +103,8 @@ a {
 
 
 
-/* Plantilla section */
-
-.squadSection {
-    width: 90%;
-    margin: auto;
-}
-
-.squadTitle {
-    text-align: center;
-    font-size: 35px;
-    font-weight: 600;
-}
-
-.playerCardDiv {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-
-.playerCard {
-    border: 1px solid rgb(172, 172, 172);
-    border-radius: 5px;
-    width: 300px;
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.playerLeft {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.playerNumberBack {
-    font-size: 60px;
-    opacity: 0.2;
-    top: 10px;
-    left: 15px;
-    margin: 0px;
-    font-weight: 900;
-    position: absolute;
-}
-
-.playerImage {
-    width: 100px;
-}
-
-.playerRight {
-    width: 100%;
-    margin: auto;
-    margin-left: 10px;
-}
-
-.playerName {
-    font-weight: 600;
-    margin-top: 5px;
-    margin-bottom: 2px;
-}
-
-.playerNum {
-    margin: 0px;
-    margin-bottom: 2px;
-}
-
-.playerAge {
-    margin: 0px;
-    margin-bottom: 2px;
-}
-
-.playerPosition {
-    margin: 0px;
+.white-text {
+    color: white;
 }
 
 /* Estadio section */
@@ -183,7 +112,8 @@ a {
     width: 100%;
 }
 
-.stadiumTitle {
+.stadiumTittle {
+    color: white;
     text-align: center;
     font-size: 35px;
     font-family: 'Gill Sans';
@@ -332,8 +262,11 @@ section{
     margin-top: 2%;
 }
 
-.perfil-imagen{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+table .perfil-imagen {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.textTable{
+    color: white;
 }

@@ -22,29 +22,21 @@
 <body>
     <!-- Zona de barra de navegacion -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand navbar-light bg-danger">
             <a class="navbar-brand" href="#">
                 <img src="{% static 'inicio/img/logonew.webp' %}" class="logo_mini" alt="Mini escudo">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="pagesRefContainer navbar-nav ml-auto">
-                    <a class="nav-item nav-link" href="{% url 'landing_page' %}">INICIO</a>
-                    <a class="nav-item nav-link" href="https://www.arseshop.com.ar/" target="_blank">TIENDA</a>
-                    <a class="nav-item nav-link" href="">ESTADISTICAS</a>
-                    <a class="nav-item nav-link" href="{% url 'landing_page' %}">SOCIO</a>
-                    <a class="nav-item nav-link" href="{% url 'landing_page' %}">CONTACTO</a>
-                </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link inicio-link" href="{% url 'landing_page' %}">INICIO</a>
+                    </li>
+                </ul>
             </div>
             <img src="{% static 'inicio/img/copas.webp' %}" class="copas_mini" alt="Mini escudo">
         </nav>
     </header>
-
-
-
+    
     <!-- Zona de Banner con lema y escudo -->
 <section class="bannerSection">
     <img src={% static "inicio/img/banner-min.webp"%} class="banner" alt="Banner">
@@ -117,26 +109,26 @@
 <!-- Zona de Plantilla con la tabla de jugadores -->
 <section class="squadSection">
     <div class="container">
-        <h1 class="text-center">NUESTRA PLANTILLA</h1>
+        <h1 class="text-center textTable">Nuestra Plantilla</h1>
         <a href="{% url 'agregar_jugador' %}" class="btn btn-primary mb-3">Agregar Jugador</a>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Edad</th>
-                        <th>Posición</th>
-                        <th>Imagen de Perfil</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th class="textTable">Nombre</th>
+                        <th class="textTable">Edad</th>
+                        <th class="textTable">Posición</th>
+                        <th class="textTable">Imagen de Perfil</th>
+                        <th class="textTable">Editar</th>
+                        <th class="textTable">Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for jugador in jugadores %}
                         <tr>
-                            <td>{{ jugador.nombre }}</td>
-                            <td>{{ jugador.edad }}</td>
-                            <td>{{ jugador.posicion }}</td>
+                            <td class="white-text">{{ jugador.nombre }}</td>
+                            <td class="white-text">{{ jugador.edad }}</td>
+                            <td class="white-text">{{ jugador.posicion }}</td>
                             <td>
                                 {% if jugador.imagen_perfil %}
                                     <img src="{{ jugador.imagen_perfil.url }}" alt="{{ jugador.nombre }} - Imagen de perfil" class="perfil-imagen img-fluid">
@@ -158,23 +150,13 @@
     </div>
 </section>
 
-<style>
-    .perfil-imagen {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
-</style>
-
-
     <!-- Zona del estadio con su imagen y texto -->
     <section class="stadiumSection">
       
         <div class="stadiumDiv">
             <div class="stadiumImg">
-                <img class="stadiumImage" src={% static "inicio/img/cancha.webp" %}alt="Imagen de jugador">
-                <h1 class="stadiumTitle"><span class="upperTitle">Estadio</span> "Julio Humberto Grondona"</h1>
+                <h1 class="stadiumTittle"><span class="upperTitle">Estadio</span> "Julio Humberto Grondona"</h1>
+                <img class="stadiumImage" src={% static "inicio/img/stadium.jpg" %}alt="Imagen de jugador">
                 <div class="stadiumText">
                     El Estadio Julio Humberto Grondona, popularmente conocido como El Viaducto fue inaugurado el 7 de
                     agosto de 2004 y se encuentra ubicado en la calle Julio Humberto Grondona 3660, además tiene una
