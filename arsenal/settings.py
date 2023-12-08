@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-80b5(ra7yncwh%9c9e1dfonum&mgb#5%p^cm$)g@$t5e!4g72d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["montagut1.pythonanywhere.com"]
+ALLOWED_HOSTS = ['montagut1.pythonanywhere.com']
 
 
 # Application definition
@@ -128,7 +128,7 @@ USE_TZ = True
 
 
 
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATIC_URL = 'static/'
 
