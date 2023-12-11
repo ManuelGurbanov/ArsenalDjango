@@ -83,13 +83,14 @@ DATABASES = {
 'default': 
     {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'montagut1$arsenaldb',
+       'NAME': 'montagut1$arsenaldb',
         'USER': 'montagut1',
         'PASSWORD': '1234database',
         'HOST': 'montagut1.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
 }
+
 
 
 # Password validation

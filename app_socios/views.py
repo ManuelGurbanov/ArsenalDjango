@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from .models import Jugador
+from .models import Partido
 def home(request):
     jugadores = Jugador.objects.all()
     data = {
@@ -54,3 +55,21 @@ def editar_jugador(request, jugador_id):
         form = JugadorForm(instance=jugador)
 
     return render(request, 'editar_jugador.html', {'form': form, 'jugador': jugador})
+
+from django.shortcuts import render, redirect
+from .forms import PartidoForm
+
+def crear_partido(request):
+    if request.method == 'POST':
+        form = PartidoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_partidos')
+    else:
+        form = PartidoForm()
+
+    return render(request, 'crear_partido.html', {'form': form})
+
+def lista_partidos(request):
+    partidos = Partido.objects.all()
+    return render(request, 'lista_partidos.html', {'partidos': partidos})

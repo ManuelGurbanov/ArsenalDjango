@@ -17,4 +17,11 @@ class Jugador(models.Model):
 
     def __str__(self):
         return self.nombre
-    
+
+class Partido(models.Model):
+    equipo_local = models.CharField(max_length=100)
+    equipo_visitante = models.CharField(max_length=100)
+    fecha = models.DateField()
+
+    def __str__(self):
+        return f"{self.equipo_local} vs {self.equipo_visitante} - {self.fecha}"
