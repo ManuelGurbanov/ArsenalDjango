@@ -120,11 +120,10 @@ createApp({
     })
         .then(response => response.json())
         .then((data) => {
-            this.equipos = data
-            for(let element of this.equipos){
+            for(let element of data){
+                this.equipos.push(element) 
                 if (element['eq']== "Arsenal Sarandí"){
                     this.arsenal = element
-                    break
                 }
             }
         }
