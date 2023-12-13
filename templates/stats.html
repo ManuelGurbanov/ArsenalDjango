@@ -1,158 +1,142 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es_LA">
+{% load static %}
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arsenal de Sarandí | Estadisticas</title>
-  <link rel="stylesheet" href="style/styles.css">
-  <link rel="stylesheet" href="../inicio/style/styles.css">
-  <link rel="stylesheet" href="../shared-styles/navbar.css">
-  <link rel="stylesheet" href="../shared-styles/footer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link rel="icon" href="../inicio/img/icon.webp">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="https://parsleyjs.org/dist/parsley.min.js"></script>
+  <title>Arsenal de Sarandí | Estadísticas</title>
 </head>
 
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'stats/styles.css' %}">
+</head>
 <body>
-
-  <!-- Zona de barra de navegacion -->
-  <header>
-    <nav>
-      <img src="../inicio/img/logonew.webp" class="logo_mini" alt="Mini escudo">
-      <button class="menu-button">
-        <div class="menu-icon">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-      </button>
-      <div class="pagesRefContainer">
-        <a href="../index.html" class="pageRef">Inicio</a>
-        <a href="https://www.arseshop.com.ar/" target="_blank" class="pageRef">Tienda</a>
-        <a href="../stats/stats.html" class="pageRef">Estadisticas</a>
-        <a href="../socio/socio.html" class="pageRef">Socio</a>
-        <a href="../contacto/contacto.html" class="pageRef">Contacto</a>
-      </div>
-      <img src="../inicio/img/copas.webp" class="copas_mini" alt="Mini escudo">
-    </nav>
-  </header>
 
   <!-- Zona de Banner con lema y escudo -->
   <section class="bannerSection">
-    <img src="../inicio/img/banner3.webp" class="banner" alt="Banner">
+    <img src="{% static 'inicio/img/banner3.webp' %}" class="banner" alt="Banner">
     <div class="bannerText">
       <h1 class="lemaText">Estadísticas</h1>
       <div></div>
     </div>
   </section>
 
-  <!-- Zona de Estadisticas -->
-  <section class="statsSection">
-    <h1 class="statsTittle">Estadisticas</h1>
-    <div class="statsContainer">
-      <div class="statsDiv">
-        <img src="../inicio/img/logo.webp" class="logoStats" alt="">
-        <div class="statsSubDiv">
-          <h2 class="statsTeam">Arsenal de Sarandí</h3>
+  <div id="statsArsenal" v-if="dataReady">
+    <!-- Zona de Estadisticas -->
+    <section class="statsSection">
+      <h1 class="statsTittle">Estadisticas</h1>
+      <div class="statsContainer">
+        <div class="statsDiv">
+          <img src="{% static 'inicio/img/logo.webp' %}" class="logoStats" alt="">
+          <div class="statsSubDiv" >
+            <h2 class="statsTeam">Arsenal de Sarandí</h3>
+              <div id="percents">
+                <div style="display: flex; justify-content: space-around; flex-direction: row;">
+                  <div class="rateDiv">
+                    <p class="rateText">Victorias</p>
+                    <h3 class="rate">{{porcGanados}}</h3>
+                  </div>
+                  <div class="rateDiv">
+                    <p class="rateText">Empates</p>
+                    <h3 class="rate">{{porcEmpates}}</h3>
+                  </div>
+                  <div class="rateDiv">
+                    <p class="rateText">Derrotas</p>
+                    <h3 class="rate">{{porcPerdidos}}</h3>
+                  </div>
+                </div>
+              </div>
 
-            <div id="percents">
-
-            </div>
-
-            <div style="display: flex;justify-content: space-between;" id="stats">
-            </div>
+              <div style="display: flex;justify-content: space-between;" id="stats">
+                <div>
+                  <p class="textDiv">Partidos: <span>{{arsenal.pj}}</span></p>
+                  <p class="textDiv">Ganados: <span>{{arsenal.pg}}</span></p>
+                  <p class="textDiv">Empatados: <span>{{arsenal.pe}}</span></p>
+                  <p class="textDiv">Perdidos: <span>{{arsenal.pp}}</span></p>
+                </div>
+                <div>
+                  <p class="textDiv">Goles metidos: <span>{{arsenal.gf}}</span></p>
+                  <p class="textDiv">Goles recibidos: <span>{{arsenal.gc}}</span></p>
+                  <p class="textDiv">Diferencia de goles: <span>{{arsenal.dif}}</span></p>
+                  <p class="textDiv">Puntos: <span>{{arsenal.pts}}</span></p>
+                </div>
+              </div>
+          </div>
         </div>
-      </div>
 
+      </div>
+    </section>
+
+    <!-- Zona de tabla -->
+    <section>
+      <h1 class="tablaTittle">Tabla</h1>
+      <table class="tableStats">
+        <thead>
+          <tr>
+            <th style="padding-left: 5px;">Club</th>
+            <th>PTS</th> <!-- Puntos -->
+            <th>PJ</th> <!-- Partidos jugados -->
+            <th>G</th> <!-- Partidos ganados-->
+            <th>E</th> <!-- Partidos empatados-->
+            <th>P</th> <!-- Partidos perdidos-->
+            <th>GF</th> <!-- Goles a favor -->
+            <th>GC</th> <!-- Goles en contra -->
+            <th>DG</th> <!-- Diferencia de goles -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="equipo in equipos">
+            <td>
+              <div class="team">
+                <p class="position">{{index}}</p>
+                <p class="teamName">{{equipo.eq}}</p>
+              </div>
+            </td>
+            <td>{{equipo.pts}}</td>
+            <td>{{equipo.pj}}</td>
+            <td>{{equipo.pg}}</td>
+            <td>{{equipo.pe}}</td>
+            <td>{{equipo.pp}}</td>
+            <td>{{equipo.gf}}</td>
+            <td>{{equipo.gc}}</td>
+            <td v-if="equipo.dif>0">+{{equipo.dif.value}}</td>
+            <td v-else="equipo.dif<=0">{{equipo.dif}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- Zona de partidos-->
+  <section class="partidosSection">
+    <h1 class="text-center textTable">Lista de Partidos</h1>
+    <a href="{% url 'crear_partido' %}" class="btn btn-primary mb-3">Agregar Partido</a>
+    <div class="table-responsive">
+      <table class="tableStats table-striped">
+        <thead>
+          <tr>
+            <th>Equipo Local</th>
+            <th>Equipo Visitante</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for partido in partidos %}
+          <tr>
+            <td>{{ partido.equipo_local }}</td>
+            <td>{{ partido.equipo_visitante }}</td>
+            <td>{{ partido.fecha }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Zona de tabla -->
-  <section>
-    <h1 class="tablaTittle">Tabla</h1>
-    <table>
-      <thead>
-        <tr>
-          <th style="padding-left: 5px;">Club</th>
-          <th>P</th> <!-- Partidos -->
-          <th>G</th> <!-- Partidos ganados-->
-          <th>E</th> <!-- Partidos empatados-->
-          <th>P</th> <!-- Partidos perdidos-->
-          <th>GM</th> <!-- Goles metidos -->
-          <th>GR</th> <!-- Goles recibidos -->
-          <th>DG</th> <!-- Diferencia de gol -->
-          <th>P</th> <!-- Puntos -->
-        </tr>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
-  </section>
-
-
-  <!-- Zona de footer -->
-
-  <footer>
-    <div class="footer-container">
-      <div class="logo-section">
-        <img src="../inicio/img/logo2x.webp" class="minilogo2x" alt="Logo">
-        <div class="social-icons">
-          <a href="https://www.instagram.com/arsenalfutbolclub/?hl=es" target="_blank" class="social-icon in"><i
-              class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.facebook.com/ArsenalFutbolClub/?locale=es_LA" target="_blank" class="social-icon fb"><i
-              class="fa-brands fa-facebook"></i></a>
-          <a href="https://twitter.com/ArsenalOficial?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-            target="_blank" class="social-icon tw"><i class="fa-brands fa-twitter"></i></a>
-          <a href="https://www.linkedin.com/company/arsenal-futbol-club/about/" target="_blank"
-            class="social-icon li"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
-      </div>
-
-      <div class="navigation-section">
-        <div class="footer-column">
-          <h3>El Club</h3>
-          <a href="#">Historia</a>
-          <a href="#">Galeria</a>
-          <a href="#">Futbol Profesional</a>
-        </div>
-        <div class="footer-column">
-          <h3>Institucional</h3>
-          <a href="#">Comisión Directiva</a>
-          <a href="#">Estatuto</a>
-          <a href="#">Futbol Profesional</a>
-        </div>
-        <div class="footer-column">
-          <h3>Polideportivo</h3>
-          <a href="#">Estadio</a>
-          <a href="#">Polideportivo</a>
-          <a href="#">Predio</a>
-          <a href="#">Básquet</a>
-        </div>
-        <div class="footer-column">
-          <h3>Depto Prensa</h3>
-          <a href="#">Acreditaciones</a>
-          <a href="#">Reglamento de Prensa</a>
-          <a href="#">Medios Oficiales</a>
-          <a href="#">Futbol Profesional</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="developers-section">
-      <p>@Webmasters: rusherdv, ManuelGurbanov, walter7786, Monty</p>
-    </div>
-
-  </footer>
-
-  <script src="../inicio/js/burguer-menu.js"></script>
-  <script src="js/script.js"></script>
+  {% endblock %}
 </body>
 
 </html>

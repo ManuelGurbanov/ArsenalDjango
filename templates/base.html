@@ -1,68 +1,84 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsenal de Sarandí</title>
-    <link rel="stylesheet" href="{% static 'inicio/style/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'inicio/style/responsive-design.css' %}">
-    <link rel="stylesheet" href="{% static 'shared-styles/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'shared-styles/slider.css' %}">
+    <link rel="icon" href="{% static 'inicio/img/icon.webp' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="inicio/img/icon.webp">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'shared-styles/navbar.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'inicio/style/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'shared-styles/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'shared-styles/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'shared-styles/slider.css' %}">
+    <link rel="stylesheet" href="{% static 'formularios.css' %}">
+    
 </head>
-<body class="custom-container">
-    <div class="container" style="max-width: 100%">
 
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="#">
-                    <img src="{% static 'inicio/img/logo.webp' %}" alt="Logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'landing_page' %}">INICIO</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'landing_page' %}">TIENDA</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'landing_page' %}">ESTADÍSTICAS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'landing_page' %}">HACERME SOCIO</a>
-                        </li>
-                    </ul>
+<body onload="mostrarContent()">
+
+    <!--Zona Spinner-->
+
+    <div id="spinner" class="loadingio-spinner-dual-ball-2bkhddlhiaa">
+        <div class="ldio-ae8svac1f4g">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="content" style="display: none;">
+
+    <!--Zona Navbar-->
+
+    <header>
+        <nav id="navMenu">
+            <img src="{% static 'inicio/img/logo.webp' %}" class="logo_mini" alt="Mini escudo">
+            <button class="menu-button" v-on:click="toggle_menu()">
+                <div class="menu-icon" ref="burguerMenu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
                 </div>
-            </nav>
-        </header>
+            </button>
+            <div class="pagesRefContainer" ref="pageContainer">
+                <a href="{% url 'landing_page' %}" class="pageRef">INICIO</a>
+                <a href="https://www.arseshop.com.ar/" target="_blank" class="pageRef">TIENDA</a>
+                <a href="{% url 'stats' %}" class="pageRef">ESTADISTICAS</a>
+                <a href="{% url 'socio' %}" class="pageRef">SOCIO</a>
+                <a href="{% url 'contacto' %}" class="pageRef">CONTACTO</a>
+            </div>
+            <img src="{% static 'inicio/img/copas.webp' %}" class="copas_mini" alt="Mini escudo">
+        </nav>
+    </header>
 
 
     <!-- Contenido específico de cada página va aquí -->
-    <div class="container" style="max-width: 100%;">
-        {% block content %}{% endblock %}
-    </div>
+
+    {% block content %}{% endblock %}
+
 
     <!-- Pie de página común -->
     <footer>
         <div class="footer-container">
             <div class="logo-section">
-                <img src="./inicio/img/logo2x.webp" class="minilogo2x" alt="">
+                <img src="{% static 'inicio/img/logo2x.webp' %}" class="minilogo2x" alt="">
                 <div class="social-icons">
                     <a href="https://www.instagram.com/arsenalfutbolclub/?hl=es" target="_blank"
                         class="social-icon in"><i class="fa-brands fa-instagram"></i></a>
@@ -86,10 +102,9 @@
                     <h3>Institucional</h3>
                     <a href="#">Comisión Directiva</a>
                     <a href="#">Estatuto</a>
-                    <a href="#">Futbol Profesional</a>
                 </div>
                 <div class="footer-column">
-                    <h3>Polideportivo</h3>
+                    <h3>Instalaciones</h3>
                     <a href="#">Estadio</a>
                     <a href="#">Polideportivo</a>
                     <a href="#">Predio</a>
@@ -100,15 +115,26 @@
                     <a href="#">Acreditaciones</a>
                     <a href="#">Reglamento de Prensa</a>
                     <a href="#">Medios Oficiales</a>
-                    <a href="#">Futbol Profesional</a>
                 </div>
             </div>
         </div>
 
         <div class="developers-section">
-            <p>@Webmasters: rusherdv, ManuelGurbanov, walter7786, Monty</p>
+            <p>@Webmasters: rusherdv, ManuelGurbanov, walter7786, Montagut-nic</p>
         </div>
 
     </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

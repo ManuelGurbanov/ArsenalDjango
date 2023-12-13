@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['montagut1.pythonanywhere.com']
 # Application definition
 
 APPS = [
-    "app_socios"
+    "app_equipo"
 ]
 
 INSTALLED_APPS = [
@@ -80,15 +80,16 @@ WSGI_APPLICATION = 'arsenal.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-'default': 
+ 'default': 
     {
         'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'montagut1$arsenaldb',
+        'NAME': 'montagut1$arsenaldb',
         'USER': 'montagut1',
         'PASSWORD': '1234database',
         'HOST': 'montagut1.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
+    
 }
 
 
@@ -127,19 +128,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
-STATIC_URL = 'static/'
-
-# STATICFILES_DIRS = [
-#    BASE_DIR / "static"
+#STATICFILES_DIRS = [
+#    BASE_DIR / "static",
 #]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')

@@ -2,160 +2,81 @@
 <!DOCTYPE html>
 <html lang="es_LA">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 {% block content %}
-<body class="custom-container">
+
+<body>
     <!-- Zona de Banner con lema y escudo -->
     <section class="bannerSection">
-    <img src={% static "inicio/img/banner-min.webp"%} class="banner" alt="Banner">
-    <div class="bannerText">
-        <div class="textContainer">
-            <h1 class="lemaText">Los del viaducto ..</h1>
+        <img src="{% static 'inicio/img/banner-min.webp'%}" class="banner" alt="Banner">
+        <div class="bannerText">
+            <div class="textContainer">
+                <h1 class="lemaText">Los del viaducto ..</h1>
+            </div>
+            <div class="imageContainer">
+                <img src="{% static 'inicio/img/logo2x.webp'%}" class="logo" alt="Escudo">
+            </div>
         </div>
-        <div class="imageContainer">
-            <img src= {% static "inicio/img/logo2x.webp"%} class="logo" alt="Escudo">
-        </div>
-    </div>
-</section>
+    </section>
 
 
     <!-- Zona del Slider -->
     <div class="slider">
-        <div class="slide-track">
-            <div class="slide">
-                <img src= {% static "inicio/img/cbse.webp"%} alt="">
+        <div class="slide-track" id="slider" ref="divTrack">
+            <div class="slide" v-for="sponsor in sponsors" > 
+                <img :src="sponsor" alt=""> 
             </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/escowebp"%} alt="">
+            <div class="slide" v-for="sponsor in sponsors"> 
+                <img :src="sponsor" alt=""> 
             </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/lanueva.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/chevallier.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/elsurco.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/multiled.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/secco.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/codo.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/cbse.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/esco.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/lanueva.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/chevallier.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/elsurco.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/multiled.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/secco.webp"%} alt="">
-            </div>
-            <div class="slide">
-                <img src= {% static "inicio/img/codo.webp"%} alt="">
+            <div class="slide" v-for="sponsor in sponsors"> 
+                <img :src="sponsor" alt=""> 
             </div>
         </div>
     </div>
 
-    <!-- Zona de Plantilla con las cards de cada jugador -->
-<!-- Zona de Plantilla con la tabla de jugadores -->
-<section class="squadSection">
-    <div class="container">
-        <h1 class="text-center textTable">Nuestra Plantilla</h1>
-        <a href="{% url 'agregar_jugador' %}" class="btn btn-primary mb-3">Agregar Jugador</a>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="textTable">Nombre</th>
-                        <th class="textTable">Edad</th>
-                        <th class="textTable">Posición</th>
-                        <th class="textTable">Imagen de Perfil</th>
-                        <th class="textTable">Editar</th>
-                        <th class="textTable">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for jugador in jugadores %}
-                        <tr>
-                            <td class="white-text">{{ jugador.nombre }}</td>
-                            <td class="white-text">{{ jugador.edad }}</td>
-                            <td class="white-text">{{ jugador.posicion }}</td>
-                            <td>
-                                {% if jugador.imagen_perfil %}
-                                    <img src="{{ jugador.imagen_perfil.url }}" alt="{{ jugador.nombre }} - Imagen de perfil" class="perfil-imagen img-fluid">
-                                {% else %}
-                                    Sin imagen
-                                {% endif %}
-                            </td>
-                            <td>
-                                <a href="{% url 'editar_jugador' jugador.id %}" class="btn btn-warning btn-sm">Editar</a>
-                            </td>
-                            <td>
-                                <a href="{% url 'eliminar_jugador' jugador.id %}" class="btn btn-danger btn-sm">Eliminar</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-
-<section class="partidosSection">
-    <h1 class="text-center textTable">Lista de Partidos</h1>
-    <a href="{% url 'agregar_partido' %}" class="btn btn-primary mb-3">Agregar Partido</a>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Equipo Local</th>
-                    <th>Equipo Visitante</th>
-                    <th>Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for partido in partidos %}
-                    <tr>
-                        <td>{{ partido.equipo_local }}</td>
-                        <td>{{ partido.equipo_visitante }}</td>
-                        <td>{{ partido.fecha }}</td>
-                    </tr>
+    <!-- Zona de Plantel con las cards de cada jugador -->
+    <section class="squadSection">
+        <div class="container">
+            <h1 class="text-center textTable">Nuestro Plantel</h1>
+            <a href="{% url 'agregar_jugador' %}" class="btn btn-primary mb-3">Agregar Jugador</a>
+            <div class="player-cards">
+                {% for jugador in jugadores %}
+                <div class="player-card">
+                    {% if jugador.imagen_perfil %}
+                    <img src="{{ jugador.imagen_perfil.url }}" alt="{{ jugador.nombre }}"
+                        class="perfil-imagen img-fluid">
+                    {% else %}
+                    <img src="{% static 'inicio\img\error_img_plyr.png' %}" alt="Imagen predeterminada"
+                        class="perfil-imagen img-fluid">
+                    {% endif %}
+                    <h3>{{ jugador.nombre }}</h3>
+                    <p>Edad: {{ jugador.edad }}</p>
+                    <p>Posición: {{ jugador.posicion }}</p>
+                    <div class="player-actions">
+                        <a href="{% url 'editar_jugador' jugador.id %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_jugador' jugador.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </div>
+                </div>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</section>
-
+            </div>
+        </div>
+    </section>
 
     <!-- Zona del estadio con su imagen y texto -->
     <section class="stadiumSection">
         <div class="stadiumDiv">
-            <h1 class="trophyTittle">Estadio</h1>
-            <h3 class="trophyTittle">"Julio Humberto Grondona"</h3>
             <div class="stadiumImg">
-                <img class="stadiumImage" src={% static "inicio/img/stadium.jpg"%} alt="Imagen de jugador">
+                <img class="stadiumImage" src="{% static 'inicio/img/cancha-min.webp' %}"" alt="Imagen del estadio">
+                <h1 class="stadiumTitle">
+                    <span class="upperTitle">Estadio</span>
+                    "Julio Humberto Grondona"
+                </h1>
                 <div class="stadiumText">
                     El Estadio Julio Humberto Grondona, popularmente conocido como El Viaducto fue inaugurado el 7 de
                     agosto de 2004 y se encuentra ubicado en la calle Julio Humberto Grondona 3660, además tiene una
@@ -177,7 +98,8 @@
         <div class="trophyDiv">
             <div class="trophy">
                 <div class="trophyTop">
-                    <img class="trophyImage" src={% static "inicio/img/trophy_0.webp"%} alt="Imagen de la Sudamericana">
+                    <img class="trophyImage" src="{% static 'inicio/img/trophy_0.webp' %}"
+                        alt="Imagen de la Sudamericana">
                 </div>
                 <div class="trophyBottom">
                     <p class="trophyName">Copa Sudamericana</p>
@@ -187,7 +109,7 @@
 
             <div class="trophy">
                 <div class="trophyTop">
-                    <img class="trophyImage" src={% static "inicio/img/trophy_1.webp"%} alt="Imagen de la Suruga Bank">
+                    <img class="trophyImage" src="{% static 'inicio/img/trophy_1.webp' %}" alt="Imagen de la Suruga Bank">
                 </div>
                 <div class="trophyBottom">
                     <p class="trophyName">Suruga Bank</p>
@@ -197,7 +119,7 @@
 
             <div class="trophy">
                 <div class="trophyTop">
-                    <img class="trophyImage" src="inicio/img/trophy_2.webp" alt="Imagen del Torneo Clausura">
+                    <img class="trophyImage" src="{% static 'inicio/img/trophy_2.webp' %}" alt="Imagen del Torneo Clausura">
                 </div>
                 <div class="trophyBottom">
                     <p class="trophyName">Torneo Clausura</p>
@@ -207,7 +129,7 @@
 
             <div class="trophy">
                 <div class="trophyTop">
-                    <img class="trophyImage" src="inicio/img/trophy_3.webp" alt="Imagen de la Supercopa Argentina">
+                    <img class="trophyImage" src="{% static 'inicio/img/trophy_3.webp' %}" alt="Imagen de la Supercopa Argentina">
                 </div>
                 <div class="trophyBottom">
                     <p class="trophyName">Supercopa Argentina</p>
@@ -217,7 +139,7 @@
 
             <div class="trophy">
                 <div class="trophyTop">
-                    <img class="trophyImage" src="inicio/img/trophy_4.webp" alt="Imagen de la Copa Argentina">
+                    <img class="trophyImage" src="{% static 'inicio/img/trophy_4.webp' %}" alt="Imagen de la Copa Argentina">
                 </div>
                 <div class="trophyBottom">
                     <p class="trophyName">Copa Argentina</p>
@@ -232,7 +154,10 @@
         <h3 class="noticiasTittle">Noticias</h3>
         <div class="postsDiv">
             <div class="twitterPost">
-                <a class="twitter-timeline" data-lang="es" data-width="326" data-height="534" data-dnt="true" data-theme="dark" href="https://twitter.com/ArsenalOficial?ref_src=twsrc%5Etfw">Tweets by ArsenalOficial</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <a class="twitter-timeline" data-lang="es" data-width="326" data-height="534" data-dnt="true"
+                    data-theme="dark" href="https://twitter.com/ArsenalOficial?ref_src=twsrc%5Etfw">Tweets by
+                    ArsenalOficial</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
             <div class="instagramPost">
                 <blockquote class="instagram-media"
@@ -620,28 +545,9 @@
             </div>
         </div>
     </section>
+    
     {% endblock %}
 
-    <script src="inicio/js/burguer-menu.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCi5mzOshTACvQq1eH02HQRH5qivUckLTY",
-            authDomain: "coc-2023.firebaseapp.com",
-            projectId: "coc-2023",
-            storageBucket: "coc-2023.appspot.com",
-            messagingSenderId: "635531780375",
-            appId: "1:635531780375:web:f8ce32152e69f59a2e9752"
-        };
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-    </script>
-    <script type="text/javascript" src="inicio/js/script.js"></script>
 </body>
-
-<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>
