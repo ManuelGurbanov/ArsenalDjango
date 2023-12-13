@@ -102,7 +102,7 @@
             <td>--equipo.pp--</td>
             <td>--equipo.gf--</td>
             <td>--equipo.gc--</td>
-            <td v-if="equipo.dif>0">+--equipo.dif.value--</td>
+            <td v-if="equipo.dif>0">+ --equipo.dif.value--</td>
             <td v-else="equipo.dif<=0">--equipo.dif--</td>
           </tr>
         </tbody>
@@ -126,9 +126,9 @@
         <tbody>
           {% for partido in partidos %}
           <tr>
-            <td>-- partido.equipo_local --</td>
-            <td>-- partido.equipo_visitante --</td>
-            <td>-- partido.fecha --</td>
+            <td>{{partido.equipo_local}}</td>
+            <td>{{partido.equipo_visitante}}</td>
+            <td>{{partido.fecha }}</td>
           </tr>
           {% endfor %}
         </tbody>
