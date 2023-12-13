@@ -37,31 +37,31 @@
                 <div style="display: flex; justify-content: space-around; flex-direction: row;">
                   <div class="rateDiv">
                     <p class="rateText">Victorias</p>
-                    <h3 class="rate">{{porcGanados}}</h3>
+                    <h3 class="rate">--porcGanados--</h3>
                   </div>
                   <div class="rateDiv">
                     <p class="rateText">Empates</p>
-                    <h3 class="rate">{{porcEmpates}}</h3>
+                    <h3 class="rate">--porcEmpates--</h3>
                   </div>
                   <div class="rateDiv">
                     <p class="rateText">Derrotas</p>
-                    <h3 class="rate">{{porcPerdidos}}</h3>
+                    <h3 class="rate">--porcPerdidos--</h3>
                   </div>
                 </div>
               </div>
 
               <div style="display: flex;justify-content: space-between;" id="stats">
                 <div>
-                  <p class="textDiv">Partidos: <span>{{arsenal.pj}}</span></p>
-                  <p class="textDiv">Ganados: <span>{{arsenal.pg}}</span></p>
-                  <p class="textDiv">Empatados: <span>{{arsenal.pe}}</span></p>
-                  <p class="textDiv">Perdidos: <span>{{arsenal.pp}}</span></p>
+                  <p class="textDiv">Partidos: <span>--arsenal.pj--</span></p>
+                  <p class="textDiv">Ganados: <span>--arsenal.pg--</span></p>
+                  <p class="textDiv">Empatados: <span>--arsenal.pe--</span></p>
+                  <p class="textDiv">Perdidos: <span>--arsenal.pp--</span></p>
                 </div>
                 <div>
-                  <p class="textDiv">Goles metidos: <span>{{arsenal.gf}}</span></p>
-                  <p class="textDiv">Goles recibidos: <span>{{arsenal.gc}}</span></p>
-                  <p class="textDiv">Diferencia de goles: <span>{{arsenal.dif}}</span></p>
-                  <p class="textDiv">Puntos: <span>{{arsenal.pts}}</span></p>
+                  <p class="textDiv">Goles metidos: <span>--arsenal.gf--</span></p>
+                  <p class="textDiv">Goles recibidos: <span>--arsenal.gc--</span></p>
+                  <p class="textDiv">Diferencia de goles: <span>--arsenal.dif--</span></p>
+                  <p class="textDiv">Puntos: <span>--arsenal.pts--</span></p>
                 </div>
               </div>
           </div>
@@ -91,19 +91,19 @@
           <tr v-for="(equipo, index) in equipos" :key="index">
             <td>
               <div class="team">
-                <p class="position">{{index}}</p>
-                <p class="teamName">{{equipo.eq}}</p>
+                <p class="position">--index--</p>
+                <p class="teamName">--equipo.eq--</p>
               </div>
             </td>
-            <td>{{equipo.pts}}</td>
-            <td>{{equipo.pj}}</td>
-            <td>{{equipo.pg}}</td>
-            <td>{{equipo.pe}}</td>
-            <td>{{equipo.pp}}</td>
-            <td>{{equipo.gf}}</td>
-            <td>{{equipo.gc}}</td>
-            <td v-if="equipo.dif>0">+{{equipo.dif.value}}</td>
-            <td v-else="equipo.dif<=0">{{equipo.dif}}</td>
+            <td>--equipo.pts--</td>
+            <td>--equipo.pj--</td>
+            <td>--equipo.pg--</td>
+            <td>--equipo.pe--</td>
+            <td>--equipo.pp--</td>
+            <td>--equipo.gf--</td>
+            <td>--equipo.gc--</td>
+            <td v-if="equipo.dif>0">+--equipo.dif.value--</td>
+            <td v-else="equipo.dif<=0">--equipo.dif--</td>
           </tr>
         </tbody>
       </table>
@@ -126,9 +126,9 @@
         <tbody>
           {% for partido in partidos %}
           <tr>
-            <td>{{ partido.equipo_local }}</td>
-            <td>{{ partido.equipo_visitante }}</td>
-            <td>{{ partido.fecha }}</td>
+            <td>-- partido.equipo_local --</td>
+            <td>-- partido.equipo_visitante --</td>
+            <td>-- partido.fecha --</td>
           </tr>
           {% endfor %}
         </tbody>
