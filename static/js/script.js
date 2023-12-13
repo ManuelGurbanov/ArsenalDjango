@@ -134,7 +134,7 @@ createApp({
         })
         .finally(()=>{
             this.dataReady = true;
-            this.$forceUpdate();
+            //this.$forceUpdate();
         });
     }
 }).mount('#statsArsenal')

@@ -88,7 +88,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="equipo in equipos">
+          <tr v-for="(equipo, index) in equipos" :key="index">
             <td>
               <div class="team">
                 <p class="position">{{index}}</p>
