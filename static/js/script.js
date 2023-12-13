@@ -111,6 +111,7 @@ createApp({
             return Math.round(this.arsenal.pp * 100 / this.arsenal.pj)
         },
     },
+    delimiters: ['--', '--'] ,
     async mounted() {
         await fetch("https://sheetdb.io/api/v1/iytkr3w8su554?sort_by=pts&sort_order=desc", {
         "method": "GET",
