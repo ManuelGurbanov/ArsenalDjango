@@ -3,13 +3,6 @@
 <html lang="es">
 {% load static %}
 {% block content %}
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'formularios.css' %}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Jugador</title>
-</head>
 <div class="form-container">
     <form method="post" enctype="multipart/form-data">
         <div class="form-title text-lg">¿Estás seguro de que deseas eliminar a {{ jugador.nombre }}?</div>
